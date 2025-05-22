@@ -12,9 +12,14 @@ from langchain_core.messages import HumanMessage, SystemMessage
 
 model = init_chat_model("gpt-4o-mini", model_provider="openai")
 
-messages = [
-  SystemMessage("Translate the following text from English to French"),
-  HumanMessage("Hi!")
-]
+# messages = [
+#   SystemMessage("Translate the following text from English to French"),
+#   HumanMessage("Hi!")
+# ]
 
-print(model.invoke(messages))
+# print(model.invoke(messages))
+
+# print(model.invoke("Hello"))
+
+for token in model.stream("Hello"):
+   print(token.content, end="|")
